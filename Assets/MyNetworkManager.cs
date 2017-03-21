@@ -19,10 +19,17 @@ public class MyNetworkManager : NetworkManager {
     public override void OnStartClient(NetworkClient myClient)
     {
         Debug.Log("Client start requested");
+        InvokeRepeating("PrintDots", 1f, 1f);
     }
 
     public override void OnClientConnect(NetworkConnection conn)
     {
+        CancelInvoke();
         Debug.Log("Client connected to " + conn.address);
+    }
+
+    void PrintDots()
+    {
+        Debug.Log(".");
     }
 }
